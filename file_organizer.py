@@ -1,11 +1,9 @@
 import os
 import shutil
 
-# 1. SETUP: Define the directory to clean
-# PRO TIP: Use r"" (raw string) to avoid issues with backslashes on Windows
 target_dir = r"C:\Users\PC\OneDrive\Documents\Bluetooth"
 
-# 2. DEFINE CATEGORIES
+# DEFINE CATEGORIES
 extensions = {
     "Images": [".jpg", ".jpeg", ".png", ".gif", ".svg"],
     "Documents": [".pdf", ".docx", ".txt", ".xlsx", ".pptx"],
@@ -16,7 +14,7 @@ extensions = {
 
 print(f"Cleaning {target_dir}...")
 
-# 3. THE LOOP
+# loops
 for filename in os.listdir(target_dir):
     file_path = os.path.join(target_dir, filename)
 
@@ -47,7 +45,7 @@ for filename in os.listdir(target_dir):
                 found = True
                 break # Stop checking other categories once found
 
-        # OPTIONAL: Move unknown files to an "Others" folder
+        # Move unknown files to an "Others" folder
         if not found and ext: # 'and ext' ensures we don't move files with no extension
             other_folder = os.path.join(target_dir, "Others")
             os.makedirs(other_folder, exist_ok=True)
