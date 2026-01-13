@@ -3,7 +3,7 @@ import shutil
 
 target_dir = r"C:\Users\PC\OneDrive\Documents\Bluetooth"
 
-# DEFINE CATEGORIES
+# the categories
 extensions = {
     "Images": [".jpg", ".jpeg", ".png", ".gif", ".svg"],
     "Documents": [".pdf", ".docx", ".txt", ".xlsx", ".pptx"],
@@ -18,34 +18,34 @@ print(f"Cleaning {target_dir}...")
 for filename in os.listdir(target_dir):
     file_path = os.path.join(target_dir, filename)
 
-    # CHECK: Is this a file?
+    # is this a file? or folder?
     if os.path.isfile(file_path):
         
         # EXTRACT extension
         _, ext = os.path.splitext(filename)
         ext = ext.lower()
 
-        # LOGIC: Check which category the file belongs to
+        # check which category the file belongs to
         found = False
         for folder_name, ext_list in extensions.items():
             if ext in ext_list:
-                # Define where it should go
+                # define where it should go
                 folder_path = os.path.join(target_dir, folder_name)
 
-                # CREATE folder if it doesn't exist
+                # creates the folder if it doesn't exist
                 # exist_ok=True prevents the code from crashing if the folder is already there
                 os.makedirs(folder_path, exist_ok=True)
 
-                # MOVE the file
+                # moves the file
                 # We assume the file name stays the same
                 new_file_path = os.path.join(folder_path, filename)
                 shutil.move(file_path, new_file_path)
                 
                 print(f"Moved: {filename} -> {folder_name}")
                 found = True
-                break # Stop checking other categories once found
+                break # stops checking other categories once found
 
-        # Move unknown files to an "Others" folder
+        # move unknown files to an "Others" folder
         if not found and ext: # 'and ext' ensures we don't move files with no extension
             other_folder = os.path.join(target_dir, "Others")
             os.makedirs(other_folder, exist_ok=True)
