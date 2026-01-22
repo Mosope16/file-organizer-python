@@ -20,10 +20,10 @@ print(f"Cleaning {target_dir}...")
 for filename in os.listdir(target_dir):
     file_path = os.path.join(target_dir, filename)
 
-    # CHECK: Is this a file?
+    # Is this a file?
     if os.path.isfile(file_path):
         
-        # EXTRACT extension
+        # extract extension
         _, ext = os.path.splitext(filename)
         ext = ext.lower()
 
