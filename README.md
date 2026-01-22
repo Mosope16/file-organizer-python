@@ -7,7 +7,7 @@ The script scans a target directory and move files into the following categories
 * **Documents:** .pdf, .docx, .txt, etc.
 * **Code:** .py, .cpp, .js, etc.
 * **Programs:**  .exe, .msi, etc.
-* **Compressed** .zip, .7z, .rar, etc.
+* **Compressed:** .zip, .7z, .rar, etc.
 
 ## Setup
 1. Clone this repo.
